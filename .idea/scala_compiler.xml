@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ScalaCompilerConfiguration">
-    <profile name="Gradle 1" modules="data-structures-in-kotlin_main,data-structures-in-kotlin_test">
+    <profile name="Gradle 2" modules="data-structures-and-algorithms.scala.main,data-structures-and-algorithms.scala.test,data-structures-and-algorithms_main,data-structures-and-algorithms_test,data-structures-in-kotlin_main,data-structures-in-kotlin_test,scala_main,scala_test">
       <option name="deprecationWarnings" value="true" />
       <option name="uncheckedWarnings" value="true" />
       <parameters>
-        <parameter value="-target:jvm-13" />
+        <parameter value="-target:jvm-1.8" />
       </parameters>
     </profile>
   </component>

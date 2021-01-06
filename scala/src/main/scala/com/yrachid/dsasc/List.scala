@@ -21,10 +21,10 @@ object List {
 
   def prepend[A](list: List[A], value: A): List[A] = list match {
     case Nil => Cons(value, Nil)
-    case _ =>  Cons(value, list)
+    case _ => Cons(value, list)
   }
 
-  def replaceHead[A](list: List[A], value: A):List[A] = list match {
+  def replaceHead[A](list: List[A], value: A): List[A] = list match {
     case Nil => Cons(value, Nil)
     case Cons(_, xs) => Cons(value, xs)
   }
