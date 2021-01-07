@@ -38,4 +38,10 @@ class ListTest extends AnyFlatSpec {
     assertResult(List(3, 4, 5, 6))(List.dropWhile[Int](iAmImmutable, _ <= 2))
   }
 
+  it should "have an accessible tail" in {
+    val aList = List(1, 2, 3)
+
+    assertResult(List(2, 3))(List.tail(aList))
+  }
+
 }
