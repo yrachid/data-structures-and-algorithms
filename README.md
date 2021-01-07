@@ -4,7 +4,17 @@ A repository to study about data structures and algorithms. Things I would like 
 
 - Using functional programming concepts with Scala and Kotlin
 - Persistent data structures
+  - Immutable Linked List
+  - Immutable Set
 - Traditional data structures
+  - Linked list
+  - Stack
+  - Queue
+  - Trees
+    - Binary Search Tree
+    - Retrieval Trees (a.k.a Tries, I really dislike this name)
+  - Graphs
+    - Djikstra's algorithm
 
 Learning resources:
 
