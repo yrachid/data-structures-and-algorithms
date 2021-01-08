@@ -1,27 +1,20 @@
 package com.yrachid.dsakt
 
-class RecursiveList<T> private constructor(
-    private val head: T? = null,
-    private val tail: RecursiveList<T>? = null,
-    val size: Int = 0
-) {
+sealed class List<out A : Any?> {
+    object Nil : List<Nothing>()
 
-    constructor() : this(null, null, 0)
+    class Cons<T>(val head: T, val tail: List<T>) : List<T>()
 
-    operator fun plus(value: T): RecursiveList<T> = RecursiveList(value, this, size + 1)
-
-    override fun toString(): String {
-        fun loop(tail: RecursiveList<T>?, acc: String? = null): String = when (tail?.head) {
-            null -> acc ?: ""
-            else -> loop(
-                tail.tail, when (acc) {
-                    null -> tail.head.toString()
-                    else -> "${tail.head}, $acc"
-                }
-            )
+    companion object {
+        fun sum(list: List<Int>): Int = when (list) {
+            is Nil -> 0
+            is Cons -> list.head + sum(list.tail)
         }
 
-        return "[${loop(tail)}, $head]"
+        operator fun <T> invoke(vararg values: T): List<T> = when {
+            values.isEmpty() -> Nil
+            else -> Cons(values.take(1), invoke(values.drop(1)))
+        }
     }
 }
 
@@ -57,11 +50,7 @@ class LinkedList<T> private constructor(private var head: Node<T>?, private var 
 }
 
 fun main() {
-    val immutableList = RecursiveList<String>() + "A" + "B" + "C" + "D"
     val linkedList = LinkedList<String>() + "A" + "B" + "C" + "D"
-
-    println(immutableList)
-    println(immutableList.size)
 
     println(linkedList)
     println(linkedList.size)
