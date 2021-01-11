@@ -10,6 +10,7 @@ A repository to study about data structures and algorithms. Things I would like 
   - Linked list
   - Stack
   - Queue
+  - Heaps (Java's [PriorityQueue](https://docs.oracle.com/javase/7/docs/api/java/util/PriorityQueue.html))
   - Trees
     - Binary Search Tree
     - Retrieval Trees (a.k.a Tries, I really dislike this name)
