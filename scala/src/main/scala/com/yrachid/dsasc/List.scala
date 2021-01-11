@@ -8,16 +8,15 @@ case class Cons[+A](head: A, tail: List[A]) extends List[A]
 
 object List {
 
-  def sum(values: List[Int]): Int = values match {
-    case Nil => 0
-    case Cons(x, xs) => x + sum(xs)
+  @scala.annotation.tailrec
+  def foldRight[A, B](values: List[A], accumulation: B)(operation: (A, B) => B): B = values match {
+    case Nil => accumulation
+    case Cons(x, xs) => foldRight(xs, operation(x, accumulation))(operation)
   }
 
-  def product(values: List[Double]): Double = values match {
-    case Nil => 1.0
-    case Cons(0.0, _) => 0.0
-    case Cons(x, xs) => x * product(xs)
-  }
+  def sum(values: List[Int]): Int = foldRight(values, 0)(_ + _)
+
+  def product(values: List[Double]): Double = foldRight(values, 1.0)(_ * _)
 
   def prepend[A](list: List[A], value: A): List[A] = list match {
     case Nil => Cons(value, Nil)
