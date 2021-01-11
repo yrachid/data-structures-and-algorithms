@@ -13,7 +13,7 @@ sealed class List<out A : Any?> {
 
         operator fun <T> invoke(vararg values: T): List<T> = when {
             values.isEmpty() -> Nil
-            else -> Cons(values.take(1), invoke(values.drop(1)))
+            else -> Cons(values[0], invoke(*values))
         }
     }
 }
@@ -51,6 +51,8 @@ class LinkedList<T> private constructor(private var head: Node<T>?, private var 
 
 fun main() {
     val linkedList = LinkedList<String>() + "A" + "B" + "C" + "D"
+
+    List(1, 2, 3)
 
     println(linkedList)
     println(linkedList.size)
