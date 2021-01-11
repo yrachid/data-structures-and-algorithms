@@ -36,9 +36,9 @@ object List {
   }
 
   @scala.annotation.tailrec
-  def dropWhile[A](values: List[A], predicate: A => Boolean): List[A] = values match {
+  def dropWhile[A](values: List[A])(predicate: A => Boolean): List[A] = values match {
     case Nil => values
-    case Cons(x, xs) if predicate(x) => dropWhile(xs, predicate)
+    case Cons(x, xs) if predicate(x) => dropWhile(xs)(predicate)
     case _ => values
   }
 

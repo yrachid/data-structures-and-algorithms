@@ -35,7 +35,7 @@ class ListTest extends AnyFlatSpec {
   it should "drop elements that match a given predicate" in {
     val iAmImmutable = List(1, 2, 3, 4, 5, 6)
 
-    assertResult(List(3, 4, 5, 6))(List.dropWhile[Int](iAmImmutable, _ <= 2))
+    assertResult(List(3, 4, 5, 6))(List.dropWhile(iAmImmutable)(_ <= 2))
   }
 
   it should "have an accessible tail" in {
