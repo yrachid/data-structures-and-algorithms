@@ -9,7 +9,7 @@ class StackTest {
 
     @Test
     void behaves_as_lifo() {
-        Stack stack = new Stack(5);
+        Stack<Integer> stack = new Stack<>(5);
 
         stack.push(1);
         stack.push(2);
@@ -26,7 +26,7 @@ class StackTest {
 
     @Test
     void overrides_used_indexes() {
-        Stack s = new Stack(3);
+        Stack<Integer> s = new Stack<>(3);
         s.push(1);
         s.push(2);
         s.push(3);
@@ -40,7 +40,7 @@ class StackTest {
 
     @Test
     void throws_exception_when_it_overflows() {
-        Stack stack = new Stack(1);
+        Stack<Integer> stack = new Stack<>(1);
         stack.push(1);
 
         StackOverflowException thrown = assertThrows(StackOverflowException.class, () -> stack.push(2));
@@ -50,8 +50,8 @@ class StackTest {
 
     @Test
     void indicates_that_it_is_empty() {
-        Stack empty = new Stack(1);
-        Stack notEmpty = new Stack(5);
+        Stack<Integer> empty = new Stack<>(1);
+        Stack<Integer> notEmpty = new Stack<>(5);
         notEmpty.push(1);
 
         assertTrue(empty.isEmpty());
@@ -64,7 +64,7 @@ class StackTest {
 
     @Test
     void indicates_that_it_is_full() {
-        Stack stack = new Stack(2);
+        Stack<Integer> stack = new Stack<>(2);
         stack.push(1);
         stack.push(2);
 

@@ -1,18 +1,19 @@
 package com.yrachid.dsaj;
 
-public class Stack {
+public class Stack<T> {
 
     private final int maxSize;
     private int top;
-    private long[] items;
+    private T[] items;
 
+    @SuppressWarnings("unchecked")
     public Stack(int maxSize) {
         this.maxSize = maxSize;
         this.top = 0;
-        this.items = new long[maxSize];
+        this.items = (T[]) new Object[maxSize];
     }
 
-    public void push(long element) {
+    public void push(T element) {
         if (top == maxSize) {
             throw new StackOverflowException("Max stack size exceeded");
         }
@@ -20,7 +21,7 @@ public class Stack {
         items[top++] = element;
     }
 
-    public long pop() {
+    public T pop() {
         return items[--top];
     }
 
