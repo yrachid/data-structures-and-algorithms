@@ -1,7 +1,4 @@
 rootProject.name = 'data-structures-and-algorithms'
 
-include(
-        'kotlin'
-        , 'scala'
-)
+include('kotlin', 'scala', 'java')
 

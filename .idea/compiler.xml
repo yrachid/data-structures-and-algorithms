@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <bytecodeTargetLevel target="13">
-      <module name="data-structures-and-algorithms_main" target="1.8" />
-      <module name="data-structures-and-algorithms_test" target="1.8" />
-      <module name="data-structures-in-kotlin_main" target="1.8" />
-      <module name="data-structures-in-kotlin_test" target="1.8" />
+    <bytecodeTargetLevel target="8">
       <module name="kotlin_main" target="1.8" />
       <module name="kotlin_test" target="1.8" />
       <module name="scala_main" target="1.8" />
