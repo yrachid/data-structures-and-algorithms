@@ -47,4 +47,31 @@ class StackTest {
 
         assertEquals("Max stack size exceeded", thrown.getMessage());
     }
+
+    @Test
+    void indicates_that_it_is_empty() {
+        Stack empty = new Stack(1);
+        Stack notEmpty = new Stack(5);
+        notEmpty.push(1);
+
+        assertTrue(empty.isEmpty());
+        assertFalse(notEmpty.isEmpty());
+
+        notEmpty.pop();
+
+        assertTrue(notEmpty.isEmpty());
+    }
+
+    @Test
+    void indicates_that_it_is_full() {
+        Stack stack = new Stack(2);
+        stack.push(1);
+        stack.push(2);
+
+        assertTrue(stack.isFull());
+
+        stack.pop();
+
+        assertFalse(stack.isFull());
+    }
 }

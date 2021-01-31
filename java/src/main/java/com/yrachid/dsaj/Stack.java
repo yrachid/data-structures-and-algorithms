@@ -24,6 +24,14 @@ public class Stack {
         return items[--top];
     }
 
+    public boolean isEmpty() {
+        return top == 0;
+    }
+
+    public boolean isFull() {
+        return top == maxSize;
+    }
+
     public static class StackOverflowException extends RuntimeException {
         public StackOverflowException(String s) {
             super(s);
