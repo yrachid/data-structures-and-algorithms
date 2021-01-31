@@ -74,4 +74,22 @@ class StackTest {
 
         assertFalse(stack.isFull());
     }
+
+    @Test
+    void use_case_reverse_string() {
+        String word = "bananas";
+        Stack<Character> chars = new Stack<>(word.length());
+
+        StringBuilder result = new StringBuilder();
+
+        for (int i = 0; i < word.length(); i++) {
+            chars.push(word.charAt(i));
+        }
+
+        while (!chars.isEmpty()) {
+            result.append(chars.pop());
+        }
+
+        assertEquals("sananab", result.toString());
+    }
 }
