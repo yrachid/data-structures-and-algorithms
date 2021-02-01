@@ -92,4 +92,19 @@ class StackTest {
 
         assertEquals("sananab", result.toString());
     }
+
+    @Test
+    void use_case_matching_delimiters() {
+        String correct = "a{b(c[d]e)f}";
+        String incorrect = "a{b(c]d}e";
+
+        assertTrue(MatchingDelimiters.isBalanced(correct));
+        assertFalse(MatchingDelimiters.isBalanced(incorrect));
+    }
+
+    static final class MatchingDelimiters {
+        static boolean isBalanced(String value) {
+            throw new RuntimeException("flw");
+        }
+    }
 }
