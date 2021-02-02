@@ -3,6 +3,9 @@ package com.yrachid.dsaj;
 import com.yrachid.dsaj.Stack.StackOverflowException;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class StackTest {
@@ -95,16 +98,49 @@ class StackTest {
 
     @Test
     void use_case_matching_delimiters() {
-        String correct = "a{b(c[d]e)f}";
-        String incorrect = "a{b(c]d}e";
-
-        assertTrue(MatchingDelimiters.isBalanced(correct));
-        assertFalse(MatchingDelimiters.isBalanced(incorrect));
+        assertTrue(MatchingDelimiters.isBalanced("a{b(c[d]e)f}"));
+        assertTrue(MatchingDelimiters.isBalanced("{[()]}"));
+        assertTrue(MatchingDelimiters.isBalanced("{{}}"));
+        assertTrue(MatchingDelimiters.isBalanced("{}[]()"));
+        assertFalse(MatchingDelimiters.isBalanced("a{b(c]d}e"));
+        assertFalse(MatchingDelimiters.isBalanced("{(})[{}]"));
     }
 
     static final class MatchingDelimiters {
+        static final Map<String, String> DELIMITERS = new HashMap<String, String>() {{
+            put("{", "}");
+            put("[", "]");
+            put("(", ")");
+        }};
+
+        static boolean isOpeningBracket(String value) {
+            return DELIMITERS.containsKey(value);
+        }
+
+        static boolean isClosingBracket(String value) {
+            return DELIMITERS.containsValue(value);
+        }
+
+        static boolean matchingBrackets(String opening, String closing) {
+            return DELIMITERS.getOrDefault(opening, "").equals(closing);
+        }
+
         static boolean isBalanced(String value) {
-            throw new RuntimeException("flw");
+            Stack<String> openingBrackets = new Stack<>(value.length());
+            String[] tokens = value.split("");
+            for (String token : tokens) {
+                if (isOpeningBracket(token)) {
+                    openingBrackets.push(token);
+                    continue;
+                }
+
+                if (isClosingBracket(token) && openingBrackets.isEmpty()
+                        || !matchingBrackets(openingBrackets.pop(), token)) {
+                    return false;
+                }
+            }
+
+            return openingBrackets.isEmpty();
         }
     }
 }
